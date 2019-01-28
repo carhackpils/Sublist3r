@@ -98,7 +98,7 @@ def parse_args():
     parser.add_argument('-t', '--threads', help='Number of threads to use for subbrute bruteforce', type=int, default=30)
     parser.add_argument('-e', '--engines', help='Specify a comma-separated list of search engines')
     parser.add_argument('-o', '--output', help='Save the results to text file')
-    parser.add_argument('-x', '--proxies', help='Use Sublist3r behind a proxies', default=False)
+    parser.add_argument('-x', '--proxy', help='Use Sublist3r behind a proxies', default=False)
     return parser.parse_args()
 
 
@@ -983,8 +983,9 @@ def interactive():
     enable_bruteforce = args.bruteforce
     verbose = args.verbose
     engines = args.engines
-    if args.proxies and not(args.proxies == ""):
-        proxies = {"http" : args.proxies, "https" : args.proxies}
+    proxies = args.proxy
+    if args.proxy and not(args.proxy == ""):
+        proxies = {"http" : args.proxy, "https" : args.proxy}
 
     if verbose or verbose is None:
         verbose = True
